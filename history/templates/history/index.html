@@ -1,0 +1,25 @@
+{% extends "history/base.html" %}
+
+{% block content %}
+
+<p>Artists and Songs</p>
+
+    <ul>
+    {% for artist in artist_list %}
+        <li>{{artist}}</li>
+            <ul>
+                {% for song in song_list %}
+                    <li>{{song}}</li>
+                {% endfor %}
+            </ul>
+    {% empty %}
+        <li>No artists have been added yet.</li>
+    {% endfor %}
+    </ul>
+
+
+{% endblock content %}
+
+
+
+
