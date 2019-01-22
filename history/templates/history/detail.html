@@ -1,0 +1,12 @@
+{% extends "history/base.html" %}
+
+{% block content %}
+
+    <h1>{{ artist.name }}</h1>
+    <ul>
+    {% for song in artist.song_set.all %}
+        <li>{{ song.name }}</li>
+    {% endfor %}
+    </ul>
+
+{% endblock content %}
