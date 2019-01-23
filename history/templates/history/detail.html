@@ -3,10 +3,15 @@
 {% block content %}
 
     <h1>{{ artist.name }}</h1>
+    <p>
+      <a href="{% url 'history:new_song' artist.id %}">Add New Song</a>  
+    </p>
     <ul>
     {% for song in artist.song_set.all %}
         <li>{{ song.name }}</li>
     {% endfor %}
     </ul>
+
+    
 
 {% endblock content %}

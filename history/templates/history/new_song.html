@@ -1,0 +1,15 @@
+{% extends "history/base.html" %}
+
+{% block content %}
+    <p><a href="{% url 'history:detail' artist.id %}"{{ artist }}></a></p>
+
+    <p>Add a New Song:</p>
+
+    <form action="{% url 'history:new_song' artist.id %}" method='post'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name='Submit'>Add Song</button>
+    </form>
+
+
+{% endblock content %}
