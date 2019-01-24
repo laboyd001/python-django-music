@@ -4,17 +4,16 @@
 
     <h1>{{ artist.name }}</h1>
 
-    {% comment %}
-    <p>
-      <!-- <a href="{% url 'history:new_song' artist.id %}">Add New Song</a>   -->
-    </p>
-    {% endcomment %}
-
+    
     <ul>
     {% for song in artist.song_set.all %}
         <li>{{ song.name }}</li>
     {% endfor %}
     </ul>
+
+    <p>
+        <button><a href="{% url 'history:new_song' artist.id %}">Add New Song</a></button>  
+    </p>
 
     
 

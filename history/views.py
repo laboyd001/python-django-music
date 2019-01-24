@@ -19,6 +19,9 @@ def detail(request, artist_id):
     artist = get_object_or_404(Artist, pk=artist_id)
     return render(request, 'history/detail.html', {'artist': artist})
 
+#=============================================
+# PCC way
+#==============================================
 # def new_artist(request):
 #     """Add a new artist"""
 #     if request.method != 'POST':
@@ -33,12 +36,7 @@ def detail(request, artist_id):
         
 #     context = {'form': form}
 #     return render(request, 'history/new_artist.html', context)
-
-
-# def new_artist_form(request):
-#     """new artist form"""
-#     return render(request, 'history/new_artist.html')
-
+# ===============================================
 
 def new_artist(request):
     """Add new artist"""
@@ -51,7 +49,9 @@ def new_artist(request):
         return HttpResponseRedirect(reverse('history:index'))
 
 
-
+# ===============================================
+# PCC Way
+# ===============================================
 # def new_song(request, artist_id):
 #     """Add a new song for a particular artist"""
 #     artist = Artist.objects.get(id=artist_id)
@@ -72,3 +72,20 @@ def new_artist(request):
     
 #     context = {'artist': artist, 'form': form}
 #     return render(request, 'history/new_song.html', context)
+# ===============================================
+
+def new_song(request, artist_id):
+    """Add a new song for a particular artist"""
+    artist = Artist.objects.get(id=artist_id)
+
+    if request.method != 'POST':
+        # No data submitted; create a blank form.
+        context = {'artist': artist}
+        return render(request, 'history/new_song.html', context)
+    else:
+        # POST data submitted; process data.
+        new_song=Song(name=request.POST['song_name'], artist_id=artist.id)
+        new_song.save()
+        return HttpResponseRedirect(reverse('history:detail', args=[artist_id]))
+    
+    
