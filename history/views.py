@@ -49,9 +49,9 @@ def new_artist(request):
         return HttpResponseRedirect(reverse('history:index'))
 
 
-# ===============================================
+#==============================================
 # PCC Way
-# ===============================================
+#==============================================
 # def new_song(request, artist_id):
 #     """Add a new song for a particular artist"""
 #     artist = Artist.objects.get(id=artist_id)
